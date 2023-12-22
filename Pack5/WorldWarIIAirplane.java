@@ -1,5 +1,6 @@
 package Pack5;
 
+import Pack7.InvalidValueException;
 
 public class WorldWarIIAirplane extends Aircraft {
 	private boolean twinEngine;
@@ -17,8 +18,9 @@ public class WorldWarIIAirplane extends Aircraft {
 		serialNumber = sn;
 	}
 	
-	public WorldWarIIAirplane(WorldWarIIAirplane c, long nsn) {
+	public WorldWarIIAirplane(WorldWarIIAirplane c, long nsn)  {
 		super(c, nsn);
+		
 		serialNumber = nsn;
 		twinEngine = c.twinEngine;
 	}

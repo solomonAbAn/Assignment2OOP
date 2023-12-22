@@ -1,8 +1,9 @@
 package Pack2;
 
-import java.util.Objects;
+
 
 import Pack3.Metro;
+import Pack7.InvalidValueException;
 
 public class Tram extends Metro {
 	private int yearOfCreation;
@@ -10,15 +11,16 @@ public class Tram extends Metro {
 	private static int counter = 30000;
 
 	// default
-	public Tram() {
+	public Tram() throws InvalidValueException {
 		super();
 		yearOfCreation = 1900;
 		serialNumber = getNextSerialNumber();
 	}
 
 	// const
-	public Tram(int yc, long sn) {
+	public Tram(int yc, long sn) throws InvalidValueException  {
 		super();
+		
 		yearOfCreation = yc;
 		serialNumber = sn;
 	}
@@ -34,7 +36,10 @@ public class Tram extends Metro {
 		return yearOfCreation;
 	}
 
-	public void setYearOfCreation(int yearOfCreation) {
+	public void setYearOfCreation(int yearOfCreation) throws InvalidValueException {
+		if (yearOfCreation<0) {
+			throw new InvalidValueException(" cannot be negative.");
+		}
 		this.yearOfCreation = yearOfCreation;
 	}
 

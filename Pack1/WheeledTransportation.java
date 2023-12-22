@@ -1,5 +1,6 @@
 package Pack1;
 
+import Pack7.InvalidValueException;
 import Pack7.MixedObjects;
 
 public class WheeledTransportation extends MixedObjects{
@@ -13,6 +14,7 @@ public class WheeledTransportation extends MixedObjects{
 		serialNumber = 1560465;
 	}
 	public WheeledTransportation(int nw, double ms, long sn) {
+		
 		numberOfWheels = nw;
 		maximumSpeed = ms;
 		serialNumber = sn;
@@ -27,19 +29,28 @@ public class WheeledTransportation extends MixedObjects{
 	public int getNumberOfWheels() {
 		return numberOfWheels;
 	}
-	public void setNumberOfWheels(int numberOfWheels) {
+	public void setNumberOfWheels(int numberOfWheels) throws InvalidValueException {
+		if (numberOfWheels<0) {
+			throw new InvalidValueException(" cannot be negative.");
+		}
 		this.numberOfWheels = numberOfWheels;
 	}
 	public double getMaximumSpeed() {
 		return maximumSpeed;
 	}
-	public void setMaximumSpeed(double maximumSpeed) {
+	public void setMaximumSpeed(double maximumSpeed) throws InvalidValueException {
+		if (maximumSpeed<0) {
+			throw new InvalidValueException(" cannot be negative.");
+		}
 		this.maximumSpeed = maximumSpeed;
 	}
 	public long getSerialNumber() {
 		return serialNumber;
 	}
-	public void setSerialNumber(long serialNumber) {
+	public void setSerialNumber(long serialNumber) throws InvalidValueException {
+		if (serialNumber<0) {
+			throw new InvalidValueException(" cannot be negative.");
+		}
 		this.serialNumber = serialNumber;
 	}
 	@Override

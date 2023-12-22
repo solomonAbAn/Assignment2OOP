@@ -13,7 +13,7 @@ import Pack6.Ferry;
 
 
 public class MixedObjects {
-    public  static MixedObjects[] generateMixedArrayWithOneFromEachClass() {
+    public  static MixedObjects[] generateMixedArrayWithOneFromEachClass() throws InvalidValueException {
     	MixedObjects[] mixedArray1 = new MixedObjects[20];
 
         mixedArray1[0] = new WheeledTransportation();
