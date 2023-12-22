@@ -1,5 +1,6 @@
 package Pack6;
 
+import Pack7.InvalidValueException;
 import Pack7.MixedObjects;
 
 public class Ferry extends MixedObjects{
@@ -16,7 +17,8 @@ public class Ferry extends MixedObjects{
 		serialNumber = getNextSerialNumber();
 	}
 	
-	public Ferry(double ms, double ml, long sn) {
+	public Ferry(double ms, double ml, long sn)  {
+		
 		maximumSpeed = ms;
 		maximumLoad = ml;
 		serialNumber = sn;
@@ -32,7 +34,10 @@ public class Ferry extends MixedObjects{
 		return maximumSpeed;
 	}
 
-	public void setMaximumSpeed(double maximumSpeed) {
+	public void setMaximumSpeed(double maximumSpeed) throws InvalidValueException {
+		if (maximumSpeed<0) {
+			throw new InvalidValueException(" cannot be negative.");
+		}
 		this.maximumSpeed = maximumSpeed;
 	}
 
@@ -40,7 +45,10 @@ public class Ferry extends MixedObjects{
 		return maximumLoad;
 	}
 
-	public void setMaximumLoad(double maximumLoad) {
+	public void setMaximumLoad(double maximumLoad) throws InvalidValueException {
+		if (maximumLoad<0) {
+			throw new InvalidValueException(" cannot be negative.");
+		}
 		this.maximumLoad = maximumLoad;
 	}
 

@@ -2,6 +2,7 @@ package Pack3;
 
 
 import Pack2.Train;
+import Pack7.InvalidValueException;
 
 public class Metro extends Train {
 	private int totalNumberOfStops;
@@ -10,15 +11,18 @@ public class Metro extends Train {
 	
 	
 	
-	public Metro() {
+	public Metro() throws InvalidValueException {
 		//and including, the starting and destination stations
 		super();
 		totalNumberOfStops = 2;
 		serialNumb = getNextSerialNumber();
 	}
-	public Metro(int ns, long sn) {
+	public Metro(int ns, long sn) throws InvalidValueException {
 		//and including, the starting and destination stations
 		super();
+		if (ns < 0||sn<0) {
+			throw new InvalidValueException(" cannot be negative.");
+		}
 		totalNumberOfStops = ns + 2;
 		serialNumb = sn;
 	}

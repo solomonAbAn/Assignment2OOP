@@ -1,6 +1,7 @@
 package Pack5;
 
 
+import Pack7.InvalidValueException;
 import Pack7.MixedObjects;
 
 public class Aircraft extends MixedObjects{
@@ -16,6 +17,7 @@ public class Aircraft extends MixedObjects{
 	}
 	
 	public Aircraft(double pr, double me, long sn) {
+		
 		price = pr;
 		maximumElevation = me;
 		serialNumber = sn;
@@ -47,7 +49,10 @@ public class Aircraft extends MixedObjects{
 	public long getSerialNumber() {
 		return serialNumber;
 	}
-	public void setSerialNumber(long serialNumber) {
+	public void setSerialNumber(long serialNumber) throws InvalidValueException {
+		if (serialNumber<0) {
+			throw new InvalidValueException(" cannot be negative.");
+		}
 		this.serialNumber = serialNumber;
 	}
 	@Override

@@ -3,6 +3,7 @@ package Pack2;
 import java.util.Objects;
 
 import Pack1.WheeledTransportation;
+import Pack7.InvalidValueException;
 
 public class Train extends WheeledTransportation {
 	private int numberOfVehicles ; 
@@ -13,16 +14,19 @@ public class Train extends WheeledTransportation {
 	
 	
 	//Default
-	public Train() {
+	public Train(){
 	    super();
+	    
 	    numberOfVehicles = 4;
 	    staringStation = "Montreal";
 	    destinationStation = "Dollard Des Omeaux";
 	    serialNumber = getNextSerialNumber(); 
+	    
 
 	}
-	public Train(int nv, String ss, String ds, long sn){
+	public Train(int nv, String ss, String ds, long sn) {
 		super();
+		
 		numberOfVehicles = nv;
 		staringStation = ss;
 		destinationStation = ds;
@@ -42,7 +46,10 @@ public class Train extends WheeledTransportation {
 	}
 
 
-	public void setNumberOfVehicles(int numberOfVehicles) {
+	public void setNumberOfVehicles(int numberOfVehicles) throws InvalidValueException {
+		if (numberOfVehicles<0) {
+			throw new InvalidValueException(" cannot be negative.");
+		}
 		this.numberOfVehicles = numberOfVehicles;
 	}
 
@@ -53,6 +60,7 @@ public class Train extends WheeledTransportation {
 
 
 	public void setStaringStation(String staringStation) {
+		
 		this.staringStation = staringStation;
 	}
 
@@ -66,6 +74,7 @@ public class Train extends WheeledTransportation {
 	}
 
 	public long getSerialNumber() {
+		
 		return serialNumber;
 	}
 	

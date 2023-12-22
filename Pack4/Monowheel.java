@@ -1,8 +1,8 @@
 package Pack4;
 
-import java.util.Objects;
 
 import Pack1.WheeledTransportation;
+import Pack7.InvalidValueException;
 
 public class Monowheel extends WheeledTransportation {
 	private double maximumWeight;
@@ -16,8 +16,9 @@ public class Monowheel extends WheeledTransportation {
 		serialNumber = getNextSerialNumber();
 	}
 
-	public Monowheel(double mw, long sn) {
+	public Monowheel(double mw, long sn)  {
 		super();
+		
 		maximumWeight = mw;
 		serialNumber = sn;
 	}
@@ -31,7 +32,10 @@ public class Monowheel extends WheeledTransportation {
 		return maximumWeight;
 	}
 
-	public void setMaximumWeight(double maximumWeight) {
+	public void setMaximumWeight(double maximumWeight) throws InvalidValueException {
+		if (maximumWeight<0) {
+			throw new InvalidValueException(" cannot be negative.");
+		}
 		this.maximumWeight = maximumWeight;
 	}
 
